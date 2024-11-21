@@ -1,8 +1,10 @@
-# React + Vite
+#Sabbati
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sabbati is a modern React-based web application designed for showcasing and promoting shoe merchandise. The app provides a sleek, responsive platform for exploring a curated selection of stylish footwear.
 
-Currently, two official plugins are available:
+Key Features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Dynamic Product Displays: Visually appealing layouts to highlight each shoe's unique features.
+User-Friendly Interface: Smooth navigation and a clean, minimal design for an optimal browsing experience.
+Responsive Design: Perfectly adapted for viewing on desktops, tablets, and mobile devices.
+This project demonstrates the power of React in creating engaging, high-performance e-commerce platforms. Dive in and discover the code behind Sabbati!/) for Fast Refresh

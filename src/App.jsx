@@ -1,28 +1,22 @@
 import React from 'react';
 import Header from './Header';
 import ShopSection from './ShopSection';
-import './App.css';
-import bgImage from './assets/bg.jpg';
 import Footer from './Footer';
+import bgImage from './assets/bg.jpg';
 
 const App = () => {
-  const sectionStyle = {
-    backgroundImage: `url(${bgImage})`,
-    height: '300vh',
-    width: '99vw',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-  };
-
   return (
-    <div style={sectionStyle} className="flex flex-col">
+    <div 
+      className="min-h-screen w-full bg-cover bg-center bg-no-repeat"
+      style={{ 
+        backgroundImage: `url(${bgImage})`,
+        backgroundAttachment: 'fixed'
+      }}
+    >
       <Header />
-      <main className="p-4 h-full w-full m-0 p-0 mt-20 mb-[0px]">
+      <main className="pt-20">
         <ShopSection />
-        
       </main>
-   
       <Footer />
     </div>
   );

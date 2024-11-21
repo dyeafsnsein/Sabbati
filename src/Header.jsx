@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { MagnifyingGlassIcon, ChevronDownIcon, UserIcon, HeartIcon, ShoppingBagIcon } from '@heroicons/react/24/solid';
 import logo from './assets/logo.png';
+import Login from './Login'; // Import the Login component
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isShopListOpen, setIsShopListOpen] = useState(false);
 
   const handleScroll = () => {
-    if (window.scrollY > 0) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
+    setIsScrolled(window.scrollY > 0);
   };
 
   useEffect(() => {
@@ -20,6 +18,16 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const toggleShopList = () => {
+    setIsShopListOpen((prev) => !prev);
+  };
+
+  const openLoginModal = (e) => {
+    e.stopPropagation(); // Prevent event from bubbling up
+    setIsOpen(true);
+    setIsShopListOpen(false); // Close shop list if it's open
+  };
 
   return (
     <nav className={`p-4 font-poppins fixed top-0 left-0 right-0 z-50 transition duration-300 ${isScrolled ? 'bg-white bg-opacity-50 backdrop-blur-md' : 'bg-transparent'}`}>
@@ -33,17 +41,17 @@ const Header = () => {
           <a href="#" className="hover:text-blue-600 font-bold" style={{ color: '#150259' }}>Home</a>
           <a href="#" className="hover:text-blue-600 font-bold" style={{ color: '#150259' }}>Men</a>
           <a href="#" className="hover:text-blue-600 font-bold" style={{ color: '#150259' }}>Women</a>
-          
+
           <div className="relative">
             <button 
-              onClick={() => setIsOpen(!isOpen)} 
+              onClick={toggleShopList} 
               className="flex items-center hover:text-blue-600 font-bold"
               style={{ color: '#150259' }}
             >
               <ChevronDownIcon className="mr-2 h-4 w-4" fill="#150259" />
               Shop List
             </button>
-            {isOpen && (
+            {isShopListOpen && (
               <div className="absolute left-0 right-0 top-full mt-2 bg-white bg-opacity-70 backdrop-blur-md text-black rounded-lg shadow-lg z-20">
                 <ul className="py-2">
                   <li><a href="#" className="flex items-center px-4 py-2 hover:bg-orange-200 transition duration-200"><span className="mr-2">📦</span>Item 1</a></li>
@@ -64,11 +72,16 @@ const Header = () => {
             <MagnifyingGlassIcon className="absolute ml-2 h-5 w-5 text-blue-600" />
           </div>
 
-          <a href=""><UserIcon className="h-6 w-6 text-blue-600 cursor-pointer" style={{color:"#150259"}} /></a>
-          <a href=""><HeartIcon className="h-6 w-6 text-blue-600 cursor-pointer" style={{color:"#150259"}}/></a>         
-          <a href=""><ShoppingBagIcon className="h-6 w-6 text-blue-600 cursor-pointer" style={{color:"#150259"}}/></a>
+          {/* User Icon Button */}
+          <button onClick={openLoginModal}>
+            <UserIcon className="h-6 w-6 text-blue-600 cursor-pointer" style={{ color: "#150259" }} />
+          </button>
+          <a href="#"><HeartIcon className="h-6 w-6 text-blue600 cursor-pointer" style={{ color: "#150259" }} /></a>
+          <a href="#"><ShoppingBagIcon className="h-6 w-6 text-blue600 cursor-pointer" style={{ color: "#150259" }} /></a>
         </div>
       </div>
+
+      {isOpen && <Login onClose={() => setIsOpen(false)} />}
     </nav>
   );
 };

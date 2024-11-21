@@ -9,7 +9,6 @@ import sh5 from './assets/sh5.png';
 import sh6 from './assets/sh6.png';
 import sh7 from './assets/sh7.png';
 
-
 const images = [sh1, sh2, sh3, sh4, sh5, sh6];
 
 const ShopSection = () => {
@@ -34,8 +33,8 @@ const ShopSection = () => {
   }, []);
 
   return (
-    <div className="w-full mb-100">
-      <section className="flex items-center justify-between p-8 rounded-lg">
+    <div className="w-full m-0 p-0 overflow-hidden">
+      <section className="flex items-center justify-between p-0 m-0 rounded-lg">
         <div className="flex-1 w-2/5">
           <h2 className="text-7xl font-bold text-blue-900 mb-4 ml-40">
             Discover Amazing Products
@@ -48,11 +47,11 @@ const ShopSection = () => {
           </button>
         </div>
         <div className="flex-none w-2/5">
-          <img src={shopImage} alt="Shop" className="w-full h-auto rounded-lg " />
+          <img src={shopImage} alt="Shop" className="w-full h-auto rounded-lg" />
         </div>
       </section>
 
-      <div className="mt-10 flex justify-between w-full h-[600px] overflow-hidden " >
+      <div className="m-0 p-0 flex justify-between w-full h-[600px] overflow-hidden">
         <div className="relative w-1/2 h-full">
           {images.slice(0, 3).map((image, index) => (
             <img
@@ -93,24 +92,25 @@ const ShopSection = () => {
           </div>
         </div>
       </div>
+      
       <div className="text-center py-12 px-4">
-      <h1 className="text-6xl text-blue-900 font-extrabold mb-4">
-        GREATNESS.<br />IT ONLY TAKES EVERYTHING.
-      </h1>
-      <p className="text-lg text-blue-900 font-light mb-6">
-        Give it your all in the collection from the player who gave it his all, every game, shot, and point.
-      </p>
-      <a
-        href="#"
-        className="bg-blue-800 text-white px-6 py-3 rounded font-bold text-sm inline-block"
-      >
-        Shop
-      </a>
-    </div>
-    <div className="flex flex-col w-full">
-          <img src={sh7} alt="Shop" className="w-full h-auto rounded-lg " />
-        </div>
-
+        <h1 className="text-6xl text-blue-900 font-extrabold mb-4">
+          GREATNESS.<br />IT ONLY TAKES EVERYTHING.
+        </h1>
+        <p className="text-lg text-blue-900 font-light mb-6">
+          Give it your all in the collection from the player who gave it his all, every game, shot, and point.
+        </p>
+        <a
+          href="#"
+          className="bg-blue-800 text-white px-6 py-3 rounded font-bold text-sm inline-block"
+        >
+          Shop
+        </a>
+      </div>av
+      
+      <div className="w-full m-0 p-0">
+        <img src={sh7} alt="Shop" className="w-full h-auto" />
+      </div>
     </div>
   );
 };

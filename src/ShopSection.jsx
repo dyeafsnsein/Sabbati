@@ -33,10 +33,11 @@ const ShopSection = () => {
   }, []);
 
   return (
-    <div className="w-full m-0 p-0 overflow-hidden">
+    <div className="w-full m-0 p-0 overflow-hidden bg-">
+      {/* First section remains the same */}
       <section className="flex items-center justify-between p-0 m-0 rounded-lg">
         <div className="flex-1 w-2/5">
-          <h2 className="text-7xl font-bold text-blue-900 mb-4 ml-40">
+          <h2 className="text-8xl font-bold text-blue-900 mb-4 ml-40">
             Discover Amazing Products
           </h2>
           <p className="text-gray-600 mb-6 ml-40">
@@ -51,65 +52,93 @@ const ShopSection = () => {
         </div>
       </section>
 
-      <div className="m-0 p-0 flex justify-between w-full h-[600px] overflow-hidden">
-        <div className="relative w-1/2 h-full">
+      {/* Modern image gallery section */}
+      <div className="relative w-full h-[600px] flex overflow-hidden">
+        <div className="relative w-1/2 h-full group">
           {images.slice(0, 3).map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Left Image ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === leftImageIndex ? 'opacity-100' : 'opacity-0'}`}
-            />
+            <div 
+              key={index} 
+              className={`absolute inset-0 transition-all duration-1000 ease-in-out ${index === leftImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+            >
+              <img
+                src={image}
+                alt={`Left Image ${index + 1}`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-20 transition-all duration-300"></div>
+            </div>
           ))}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
             {images.slice(0, 3).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setLeftImageIndex(index)}
-                className={`h-2 w-2 rounded-full ${index === leftImageIndex ? 'bg-blue-600' : 'bg-gray-300'}`}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === leftImageIndex ? 'bg-blue-600 w-6' : 'bg-white/50 hover:bg-blue-300'}`}
               />
             ))}
           </div>
         </div>
 
-        <div className="relative w-1/2 h-full">
+        <div className="relative w-1/2 h-full group">
           {images.slice(3).map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Right Image ${index + 4}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === rightImageIndex ? 'opacity-100' : 'opacity-0'}`}
-            />
+            <div 
+              key={index} 
+              className={`absolute inset-0 transition-all duration-1000 ease-in-out ${index === rightImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+            >
+              <img
+                src={image}
+                alt={`Right Image ${index + 4}`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-20 transition-all duration-300"></div>
+            </div>
           ))}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
             {images.slice(3).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setRightImageIndex(index)}
-                className={`h-2 w-2 rounded-full ${index === rightImageIndex ? 'bg-blue-600' : 'bg-gray-300'}`}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === rightImageIndex ? 'bg-blue-600 w-6' : 'bg-white/50 hover:bg-blue-300'}`}
               />
             ))}
           </div>
         </div>
       </div>
-      
-      <div className="text-center py-12 px-4">
-        <h1 className="text-6xl text-blue-900 font-extrabold mb-4">
-          GREATNESS.<br />IT ONLY TAKES EVERYTHING.
-        </h1>
-        <p className="text-lg text-blue-900 font-light mb-6">
-          Give it your all in the collection from the player who gave it his all, every game, shot, and point.
-        </p>
-        <a
-          href="#"
-          className="bg-blue-800 text-white px-6 py-3 rounded font-bold text-sm inline-block"
-        >
-          Shop
-        </a>
-      </div>av
-      
-      <div className="w-full m-0 p-0">
-        <img src={sh7} alt="Shop" className="w-full h-auto" />
+
+      {/* Modern motivational section */}
+      <div className="bg-gradient-to-br from-blue-900 to-blue-600 text-white py-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-5xl font-bold mb-6 tracking-tight leading-tight">
+            GREATNESS IS A JOURNEY.<br />
+            EMBRACE EVERY MOMENT.
+          </h1>
+          <p className="text-xl font-light mb-8 opacity-80">
+            Every challenge is an opportunity. Every setback, a lesson. Push beyond limits and redefine your potential.
+          </p>
+          <div className="flex justify-center space-x-4">
+            <a 
+              href="#" 
+              className="px-8 py-3 bg-white text-blue-900 rounded-full font-semibold hover:bg-blue-100 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              Explore Collection
+            </a>
+            <a 
+              href="#" 
+              className="px-8 py-3 border-2 border-white rounded-full font-semibold hover:bg-white hover:text-blue-900 transition-all duration-300"
+            >
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Full width image */}
+      <div className="w-full">
+        <img 
+          src={sh7} 
+          alt="Shop" 
+          className="w-full h-auto object-cover" 
+        />
       </div>
     </div>
   );

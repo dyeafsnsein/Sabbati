@@ -8,20 +8,43 @@ import {
 
 const AuthModal = ({ onClose }) => {
   const [isLogin, setIsLogin] = useState(true);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    repeatPassword: ''
+  });
 
   useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body);
+    const scrollPosition = window.scrollY;
+
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.width = '100%';
     document.body.style.overflow = 'hidden';
-    
+
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      
+      window.scrollTo(0, parseInt(document.body.style.top) * -1);
     };
   }, []);
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { email, password, repeatPassword } = formData;
+
     if (isLogin) {
       console.log('Logging in with', { email, password });
     } else {
@@ -94,8 +117,9 @@ const AuthModal = ({ onClose }) => {
               />
               <input
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
                 required
                 placeholder="Email Address"
                 className="w-full pl-10 pr-4 py-3 
@@ -112,8 +136,9 @@ const AuthModal = ({ onClose }) => {
               />
               <input
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
                 required
                 placeholder="Password"
                 className="w-full pl-10 pr-4 py-3 
@@ -131,8 +156,9 @@ const AuthModal = ({ onClose }) => {
                 />
                 <input
                   type="password"
-                  value={repeatPassword}
-                  onChange={(e) => setRepeatPassword(e.target.value)}
+                  name="repeatPassword"
+                  value={formData.repeatPassword}
+                  onChange={handleInputChange}
                   required
                   placeholder="Confirm Password"
                   className="w-full pl-10 pr-4 py-3 
